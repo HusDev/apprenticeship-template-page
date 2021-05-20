@@ -18,7 +18,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 30px;
-    background-color: var(--purple);
+    background-color: var(--dark-purple);
     margin: 0px;
   }
 

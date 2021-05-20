@@ -22,6 +22,7 @@
     .testimonial-card { 
         border: 1px solid var(--gray-3);
         color: #6A6A6A;
+        background-color: white;
     }
 
     .paragraph { 

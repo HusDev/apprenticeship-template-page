@@ -13,11 +13,12 @@
   .application-close p {
     color: var(--purple);
     font-weight: 500;
+    font-size: 16px;
   }
 
   .application-close span {
     color: var(--gray-1);
-    font-size: x-large;
+    font-size: 24px;
     font-weight: 300;
   }
 </style>

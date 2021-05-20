@@ -9,7 +9,9 @@
     <div>
       <span class="title">Do I get a job placement upon graduation?</span>
     </div>
-    <ReadMoreButton bind:isMore />
+    <div class="toggle-btn">
+      <ReadMoreButton bind:isMore />
+    </div>
     <p class={isMore ? "" : "hidden"}>
       The majority of our students receive numerous job offers at the end of the
       second academic year of their Bachelor's programme and at the end of the
@@ -31,7 +33,7 @@
 <style>
   .fq {
     border-bottom: solid 1px var(--gray-3);
-    padding: 20px;
+    padding: 20px 0;
   }
 
   .heading {
@@ -60,4 +62,8 @@
   .hidden {
     display: none;
   }
+  .toggle-btn { 
+    display: flex;
+    justify-content: flex-end;
+}
 </style>

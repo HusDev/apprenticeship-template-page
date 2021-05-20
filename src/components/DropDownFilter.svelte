@@ -25,7 +25,7 @@
 
 <style>
   .dropdown {
-    position: absolute;
+    position: relative;
     display: flex;
     justify-content: space-between;
     width: 200px;
@@ -34,7 +34,7 @@
     border-radius: 30px;
     color: var(--purple);
     cursor: pointer;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
   }
 
@@ -43,7 +43,7 @@
     position: absolute;
     min-width: 160px;
     padding-top: 10px;
-    z-index: 2;
+    z-index: 3;
   }
 
   .active {
@@ -51,7 +51,7 @@
   }
 
   .expand {
-    height: 150px;
     border-radius: 25px;
+    height: 200px;
   }
 </style>

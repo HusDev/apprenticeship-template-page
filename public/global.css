@@ -4,7 +4,8 @@
 
 /* Global color palette */
 :root {
-  --purple: rgb(82, 57, 150);
+  --purple: #685dc5;
+  --dark-purple: rgb(82, 57, 150);
   --green: #4fa16c;
   --gray-1: #535353;
   --gray-2: #6a6a6a;
@@ -27,4 +28,5 @@ body {
 p {
   color: var(--gray-2);
   font-weight: 300;
+  line-height: 32px;
 }
