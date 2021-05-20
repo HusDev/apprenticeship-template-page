@@ -3,7 +3,6 @@
 }
 
 /* Global color palette */
-
 :root {
 	--purple: #685DC5;
 	--green: #4fa16c; 
@@ -14,5 +13,14 @@
 	--gray-5: #FBFBFB;
   }
   
+  *::selection { 
+	/* Heighlight colors */
+	background-color: var(--purple);
+	color: white;
+}
 
+	p { 
+		color: var(--gray-2);
+		font-weight: 300;
+	}
   
