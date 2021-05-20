@@ -1,26 +1,30 @@
-* { 
-	font-family: sans-serif ; /* Font Family for the page is "Apercu Pro" */
+* {
+  font-family: sans-serif; /* Font Family for the page is "Apercu Pro" */
 }
 
 /* Global color palette */
 :root {
-	--purple: #685DC5;
-	--green: #4fa16c; 
-	--gray-1: #535353;
-	--gray-2: #6A6A6A;
-	--gray-3: #DADADA;
-	--gray-4: #E6E6E6;
-	--gray-5: #FBFBFB;
-  }
-  
-  *::selection { 
-	/* Heighlight colors */
-	background-color: var(--purple);
-	color: white;
+  --purple: rgb(82, 57, 150);
+  --green: #4fa16c;
+  --gray-1: #535353;
+  --gray-2: #6a6a6a;
+  --gray-3: #dadada;
+  --gray-4: #e6e6e6;
+  --gray-5: #fbfbfb;
 }
 
-	p { 
-		color: var(--gray-2);
-		font-weight: 300;
-	}
-  
+*::selection {
+  /* Heighlight colors */
+  background-color: var(--purple);
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  color: var(--gray-2);
+  font-weight: 300;
+}
