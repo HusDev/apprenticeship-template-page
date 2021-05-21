@@ -338,6 +338,10 @@
     margin-top: 10px;
   }
 
+  .dropdown div {
+    z-index: 1;
+  }
+
   .dropdown span {
     margin-right: 10px;
     margin-top: inherit;
