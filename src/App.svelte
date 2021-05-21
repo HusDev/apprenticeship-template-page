@@ -9,8 +9,38 @@
   import TestimonialCard from "./components/TestimonialCard.svelte";
   import FrequentQuestion from "./components/FrequentQuestion.svelte";
   import Dropdown from "./components/Dropdown.svelte";
+
+  // Fetch API
+  let dataPromise;
+  const request = async () => {
+    const res = await fetch(
+      "https://stage.harbour.space/api/v1/scholarship_pages/data-science-apprenticeship-zeptolab"
+    );
+    const data = await res.json();
+    console.log(data);
+    return await data;
+  };
+
+  dataPromise = request();
 </script>
 
+<svelte:head>
+  {#await dataPromise}
+    <title>waiting ...</title>
+  {:then data}
+    <title>{data.meta.title}</title>
+    <meta name="abstract" content={data.meta.abstract} />
+    <meta name="description" content={data.meta.description} />
+    <meta name="scope" content={data.meta.scope} />
+    <meta name="keywords" content={data.meta.keywords} />
+  {/await}
+</svelte:head>
+
+{#await dataPromise}
+<div class="waiting">
+  <h1>HARBOUR.SPACE</h1>
+</div>    
+  {:then data}
 <main>
   <Navbar />
   <div class="container">
@@ -18,7 +48,7 @@
     <section class="scholarship-info">
       <div class="left-side">
         <div class="name-element">
-          <h1 class="name">Interaction Design Apprenticeship</h1>
+          <h1 class="name">{data.scholarship.name}</h1>
           <img
             src="/assets/img/element/background-element-1.svg"
             alt="background element"
@@ -127,6 +157,7 @@
     </section>
   </div>
 </main>
+{/await}
 
 <style>
   .container {
@@ -371,8 +402,6 @@
   */
 
   @media (min-width: 1025px) and (max-width: 1280px) {
-
-
     /* First Section Data Science Apprenticeship info */
     .scholarship-info .right-side img {
       left: 0px;
@@ -394,9 +423,8 @@
     .slider {
       grid-template-columns: 1fr;
       padding: 1px;
-      margin: 200px 20%; 
+      margin: 200px 20%;
     }
-
   }
 
   /* 
@@ -405,7 +433,6 @@
   */
 
   @media (min-width: 768px) and (max-width: 1024px) {
-
     .scholarship-info .right-side img {
       left: 0px;
       width: 100%;
@@ -428,8 +455,17 @@
     .slider {
       grid-template-columns: 1fr;
       padding: 1px;
-      margin: 200px 20px; 
+      margin: 200px 20px;
     }
+  }
+
+  .waiting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    color: var(--purple);
   }
 
   /* 
@@ -438,7 +474,6 @@
   */
 
   @media (min-width: 320px) and (max-width: 767px) {
-
     /* First Section Data Science Apprenticeship info */
     .container {
       padding: 0 5%;
@@ -527,10 +562,10 @@
     .slider {
       grid-template-columns: 1fr;
       padding: 1px;
-      margin: 200px 20px; 
+      margin: 200px 20px;
     }
 
-    .name-element img{
+    .name-element img {
       display: none;
     }
   }
