@@ -1,8 +1,14 @@
+<script>
+  export let image;
+  export let name; 
+</script>
+
 <div class="partner">
-  <img src="/assets/img/partner-logo.svg" alt="partner logo" />
+  <img src={image} alt="partner logo" />
+
   <div>
     <span>Powered by:</span>
-    <span class="name">Zeptolab</span>
+    <span class="name">{name}</span>
   </div>
 </div>
 
@@ -28,5 +34,9 @@
     font-size: 27px;
     font-weight: 300;
     color: var(--gray-2);
+  }
+
+  img { 
+    width: 150px;
   }
 </style>

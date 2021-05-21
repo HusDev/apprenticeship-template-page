@@ -67,7 +67,10 @@
         </div>
         <div class="right-side">
           <!-- Powered By -->
-          <PartnerComponent />
+          <PartnerComponent
+            image={data.scholarship.company.logo_light.src}
+            name={data.scholarship.company.name}
+          />
           <!-- Application expiration date -->
           <ApplicationDate
             application_end_date={data.scholarship.application_end_date}
@@ -98,7 +101,7 @@
         <div>
           <span class="title">About the apprenticeship</span>
           <p>
-            {data.scholarship.program.description[0].data}
+            {data.scholarship.about["0"].data}
           </p>
         </div>
       </div>
@@ -108,13 +111,27 @@
     <section class="calcualtion">
       <!-- Grid -->
       <div class="scholarship-value">
-        <ScholarshipCard />
+        <ScholarshipCard
+          total_value={data.scholarship.total_value}
+          remaining={data.scholarship.remaining}
+          tuition={data.scholarship.tuition}
+          stipend_per_month={data.scholarship.stipend_per_month}
+          stipend_per_year={data.scholarship.stipend_per_year}
+        />
       </div>
       <div class="study-commitment">
-        <Commitment />
+        <Commitment
+          title={"Study commitment"}
+          description={data.scholarship.study_commitment_text}
+          effort={data.scholarship.study_commitment}
+        />
       </div>
       <div class="work-commitment">
-        <Commitment />
+        <Commitment
+          title={"Internship commitment"}
+          description={data.scholarship.internship_commitment_text}
+          effort={data.scholarship.internship_commitment}
+        />
       </div>
       <!-- -- Graduation line --  -->
       <div class="graduation-line">
@@ -123,7 +140,11 @@
         <div class="line" />
       </div>
       <div class="contract">
-        <Commitment />
+        <Commitment
+          title={"Work opportunity"}
+          description={"The most successful participants may be offered to join Zeptolab full-time after graduation."}
+          effort={""}
+        />
       </div>
     </section>
     <section>
@@ -151,10 +172,10 @@
           </div>
         </div>
         <div class="fqa-list">
-          <FrequentQuestion />
-          <FrequentQuestion />
-          <FrequentQuestion />
-          <FrequentQuestion />
+          {#each data.scholarship.faqs.items as faq}
+            
+            <FrequentQuestion {faq} />
+            {/each}
         </div>
       </section>
     </div>
@@ -189,7 +210,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 100px;
-    margin-top: 100px;
+    margin-top: 200px;
     margin-bottom: 50px;
   }
 
@@ -286,11 +307,18 @@
   .calcualtion .study-commitment {
     grid-column: 2/3;
     grid-row: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
   }
   .calcualtion .work-commitment {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
   }
+
   .calcualtion .graduation-line {
     grid-column: 2/4;
     grid-row: 2/3;
@@ -313,6 +341,9 @@
   .calcualtion .contract {
     grid-column: 2/4;
     grid-row: 3/4;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
   }
 
   /* End Third Section  */

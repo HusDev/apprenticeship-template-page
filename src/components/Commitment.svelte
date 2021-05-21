@@ -1,10 +1,17 @@
+<script>
+  export let effort; 
+  export let description;
+  export let title; 
+</script>
+
 <div class="commitment-card">
-  <span class="title">Study commitment</span>
-  <span class="effort">3 hours / day</span>
+  <span class="title">{title}</span>
+  {#if effort != ""}
+  <span class="effort">{effort} hours / day</span>
   <div class="line" />
+  {/if}
   <p>
-    You will complete 15 modules to graduate. Daily classes are 3 hours, plus
-    coursework to complete in your own time.
+   {description}
   </p>
 </div>
 
@@ -15,6 +22,7 @@
     padding: 30px 20px;
     border: var(--gray-3) solid 1px;
     border-radius: 4px;
+    height: 100%;
   }
 
   .title {
