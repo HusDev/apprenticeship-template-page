@@ -1,4 +1,5 @@
 <script>
+  import "./components/responsive.css";
   import Navbar from "./components/Navbar.svelte";
   import ScholarshipCard from "./components/ScholarshipCard.svelte";
   import Commitment from "./components/Commitment.svelte";
@@ -7,9 +8,8 @@
   import ApplicationDate from "./components/ApplicationDate.svelte";
   import ApprenticeshipInfoCard from "./components/ApprenticeshipInfoCard.svelte";
   import TestimonialCard from "./components/TestimonialCard.svelte";
-  import DropDownFilter from "./components/DropDownFilter.svelte";
   import FrequentQuestion from "./components/FrequentQuestion.svelte";
-import Dropdown from "./components/Dropdown.svelte";
+  import Dropdown from "./components/Dropdown.svelte";
 </script>
 
 <main>
@@ -51,13 +51,15 @@ import Dropdown from "./components/Dropdown.svelte";
         </div>
       </div>
     </section>
+  </div>
 
-    <!-- Section About the apprenticeship -->
-    <section class="apprenticeship-info">
-      <div class="circle-pattren">
-        <img src="/assets/img/profile-2.png" alt="circle pattren" />
-      </div>
-      <div class="apprenticeship-description">
+  <!-- Section About the apprenticeship -->
+  <section class="apprenticeship-info">
+    <div class="circle-pattren">
+      <img src="/assets/img/profile-2.png" alt="circle pattren" />
+    </div>
+    <div class="apprenticeship-description">
+      <div>
         <span class="title">About the apprenticeship</span>
         <p>
           Our Apprenticeship opportunities are designed to give talented and
@@ -68,32 +70,31 @@ import Dropdown from "./components/Dropdown.svelte";
           job upon graduation.
         </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Section Calculation -->
-    <section class="calcualtion">
-      <!-- Grid -->
-      <div class="scholarship-value">
-        <ScholarshipCard />
-      </div>
-      <div class="study-commitment">
-        <Commitment />
-      </div>
-      <div class="work-commitment">
-        <Commitment />
-      </div>
-      <!-- -- Graduation line --  -->
-      <div class="graduation-line">
-        <div class="line" />
-        <span>Graduation</span>
-        <div class="line" />
-      </div>
-      <div class="contract">
-        <Commitment />
-      </div>
-    </section>
-  </div>
-
+  <!-- Section Calculation -->
+  <section class="calcualtion">
+    <!-- Grid -->
+    <div class="scholarship-value">
+      <ScholarshipCard />
+    </div>
+    <div class="study-commitment">
+      <Commitment />
+    </div>
+    <div class="work-commitment">
+      <Commitment />
+    </div>
+    <!-- -- Graduation line --  -->
+    <div class="graduation-line">
+      <div class="line" />
+      <span>Graduation</span>
+      <div class="line" />
+    </div>
+    <div class="contract">
+      <Commitment />
+    </div>
+  </section>
   <section>
     <div class="slider">
       <div class="pattern">
@@ -102,8 +103,7 @@ import Dropdown from "./components/Dropdown.svelte";
           alt="background element"
         />
       </div>
-      <TestimonialCard />
-      <TestimonialCard />
+      <div />
       <TestimonialCard />
     </div>
   </section>
@@ -114,7 +114,9 @@ import Dropdown from "./components/Dropdown.svelte";
         <h1>Frequently asked questions</h1>
         <div class="dropdown">
           <span>Filter by:</span>
-          <Dropdown/>
+          <div>
+            <Dropdown />
+          </div>
         </div>
       </div>
       <div class="fqa-list">
@@ -202,12 +204,13 @@ import Dropdown from "./components/Dropdown.svelte";
   /* --- End First Section CSS --- */
 
   /* --- Second Section CSS --- */
-  section.apprenticeship-info {
+  .apprenticeship-info {
     margin-top: 200px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 50px;
+    margin: 150px 20%;
   }
 
   .circle-pattren {
@@ -240,7 +243,7 @@ import Dropdown from "./components/Dropdown.svelte";
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin: 150px 0;
+    margin: 150px 20%;
   }
 
   .calcualtion .scholarship-value {
@@ -305,7 +308,7 @@ import Dropdown from "./components/Dropdown.svelte";
     right: 0;
   }
 
-  .slider .pattern img { 
+  .slider .pattern img {
     width: 50%;
     margin-top: -100px;
   }
@@ -333,7 +336,7 @@ import Dropdown from "./components/Dropdown.svelte";
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-top: 10px
+    margin-top: 10px;
   }
 
   .dropdown span {
@@ -344,5 +347,187 @@ import Dropdown from "./components/Dropdown.svelte";
   .fqa-list {
     margin-bottom: 150px;
     border-top: var(--gray-3) solid 1px;
+  }
+
+  /* Responsive */
+
+  /* -- Responsive -- */
+
+  /* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+  @media (min-width: 1281px) {
+    /* Future use */
+  }
+
+  /* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+
+  @media (min-width: 1025px) and (max-width: 1280px) {
+
+
+    /* First Section Data Science Apprenticeship info */
+    .scholarship-info .right-side img {
+      left: 0px;
+      width: 100%;
+    }
+
+    .container {
+      padding: 0 5%;
+    }
+
+    .apprenticeship-info,
+    .calcualtion {
+      margin: 150px 5%;
+    }
+
+    .scholarship-info div.left-side h1.name {
+      font-size: 48px;
+    }
+    .slider {
+      grid-template-columns: 1fr;
+      padding: 1px;
+      margin: 200px 20%; 
+    }
+
+  }
+
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+
+    .scholarship-info .right-side img {
+      left: 0px;
+      width: 100%;
+    }
+
+    /* First Section Data Science Apprenticeship info */
+    .container {
+      padding: 0 2%;
+    }
+
+    section.apprenticeship-info,
+    .calcualtion {
+      margin: 150px 2%;
+    }
+
+    .scholarship-info div.left-side h1.name {
+      font-size: 48px;
+    }
+
+    .slider {
+      grid-template-columns: 1fr;
+      padding: 1px;
+      margin: 200px 20px; 
+    }
+  }
+
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+
+  @media (min-width: 320px) and (max-width: 767px) {
+
+    /* First Section Data Science Apprenticeship info */
+    .container {
+      padding: 0 5%;
+    }
+
+    .calcualtion {
+      margin: 150px 5%;
+    }
+
+    section.apprenticeship-info {
+      margin: 250px 0 0 0;
+    }
+
+    section.scholarship-info {
+      grid-template-columns: 1fr;
+    }
+
+    .scholarship-info div.left-side h1.name {
+      font-size: 32px;
+    }
+
+    .scholarship-info .right-side img {
+      left: 0px;
+      width: 100%;
+    }
+
+    section.apprenticeship-info {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
+    section.apprenticeship-info img {
+      z-index: 1;
+    }
+
+    section.apprenticeship-info img {
+      width: 80%;
+      content: url(/assets/img/barcelona.png);
+    }
+
+    .apprenticeship-description {
+      background-color: var(--purple);
+      margin-top: -200px;
+      height: 400px;
+      margin-bottom: 300px;
+    }
+
+    .apprenticeship-description div {
+      background-color: white;
+      margin: 0 20px;
+      padding: 150px 0 0 20px;
+      border: var(--gray-3) solid 1px;
+      height: 400px;
+    }
+
+    .calcualtion {
+      display: flex;
+      flex-direction: column;
+      margin: 0 5%;
+    }
+
+    .filter {
+      flex-direction: column;
+      padding: 10%;
+    }
+
+    .filter .dropdown {
+      flex-direction: column;
+      width: 100%;
+      justify-content: stretch;
+      align-items: stretch;
+    }
+    .dropdown div {
+      width: 100%;
+      margin: 10px 0;
+      background-color: white;
+      z-index: 2;
+    }
+
+    .fqa-list {
+      margin-top: 20px;
+      border-top: 0;
+    }
+
+    .slider {
+      grid-template-columns: 1fr;
+      padding: 1px;
+      margin: 200px 20px; 
+    }
+
+    .name-element img{
+      display: none;
+    }
   }
 </style>

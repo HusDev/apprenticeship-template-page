@@ -40,6 +40,7 @@
     padding: 10px;
     margin-bottom: 1em;
     z-index: 2;
+    background-color: white;
   }
 
   .dropdown .title {
@@ -67,4 +68,12 @@
   .pointerCursor:hover {
     cursor: pointer;
   }
+
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .dropdown {
+      width: 100%;
+    }
+  
+}
 </style>

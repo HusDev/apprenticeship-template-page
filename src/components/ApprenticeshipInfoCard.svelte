@@ -47,4 +47,14 @@
     font-weight: 300;
     margin-bottom: 10px;
   }
+
+
+  @media (min-width: 320px) and (max-width: 767px) {
+    .info-card { 
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
 </style>
+ 

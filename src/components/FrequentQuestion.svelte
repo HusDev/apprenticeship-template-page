@@ -66,4 +66,15 @@
     display: flex;
     justify-content: flex-end;
 }
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+    .category {
+      display: none;
+    }
+
+    .heading {
+      grid-template-columns: 4fr 1fr;
+    }
+}
 </style>

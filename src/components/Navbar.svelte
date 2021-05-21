@@ -68,4 +68,17 @@
   .apply-now span {
     width: min-content;
   }
+
+
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+  @media (min-width: 320px) and (max-width: 767px) {
+    nav .apply-now {
+      visibility: hidden;
+    }
+  }
+  
 </style>
