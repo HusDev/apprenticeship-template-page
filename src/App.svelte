@@ -37,126 +37,128 @@
 </svelte:head>
 
 {#await dataPromise}
-<div class="waiting">
-  <h1>HARBOUR.SPACE</h1>
-</div>    
-  {:then data}
-<main>
-  <Navbar />
-  <div class="container">
-    <!-- Section Data Science Apprenticeship info -->
-    <section class="scholarship-info">
-      <div class="left-side">
-        <div class="name-element">
-          <h1 class="name">{data.scholarship.name}</h1>
-          <img
-            src="/assets/img/element/background-element-1.svg"
-            alt="background element"
-          />
+  <div class="waiting">
+    <h1>HARBOUR.SPACE</h1>
+  </div>
+{:then data}
+  <main>
+    <Navbar />
+    <div class="container">
+      <!-- Section Data Science Apprenticeship info -->
+      <section class="scholarship-info">
+        <div class="left-side">
+          <div class="name-element">
+            <h1 class="name">{data.scholarship.name}</h1>
+            <img
+              src="/assets/img/element/background-element-1.svg"
+              alt="background element"
+            />
+          </div>
+          <span class="slogan">
+            A fully funded work-study program to launch your tech career
+          </span>
+          <span>
+            {data.scholarship.description[0].data}
+          </span>
+          {#if data.scholarship.position != ""}
+            <span><b>Position: </b> {data.scholarship.position}</span>
+          {/if}
+          <MainButton />
         </div>
-        <span class="slogan">
-          A fully funded work-study program to launch your tech career
-        </span>
-        <span>
-          Harbour.Space has partnered with SCG to empower driven talent and
-          eliminate the barriers to accessing exceptional education and career
-          opportunities through a Masters Fellowship.
-        </span>
-        <span><b>Position: </b> Marketing Performance</span>
-        <MainButton />
+        <div class="right-side">
+          <!-- Powered By -->
+          <PartnerComponent />
+          <!-- Application expiration date -->
+          <ApplicationDate
+            application_end_date={data.scholarship.application_end_date}
+          />
+          <!-- programme date-location info -->
+          <div class="date-location">
+            <ApprenticeshipInfoCard
+              location={data.scholarship.location.name}
+              duration={data.scholarship.duration}
+              start_date={data.scholarship.scholarship_start_date}
+              application_end_date={data.scholarship.application_end_date}
+            />
+            <img
+              src="/assets/img/element/background-element-2.svg"
+              alt="background element"
+            />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Section About the apprenticeship -->
+    <section class="apprenticeship-info">
+      <div class="circle-pattren">
+        <img src="/assets/img/profile-2.png" alt="circle pattren" />
       </div>
-      <div class="right-side">
-        <!-- Powered By -->
-        <PartnerComponent />
-        <!-- Application expiration date -->
-        <ApplicationDate application_end_date={data.scholarship.application_end_date}/>
-        <!-- programme date-location info -->
-        <div class="date-location">
-          <ApprenticeshipInfoCard />
+      <div class="apprenticeship-description">
+        <div>
+          <span class="title">About the apprenticeship</span>
+          <p>
+            {data.scholarship.program.description[0].data}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Calculation -->
+    <section class="calcualtion">
+      <!-- Grid -->
+      <div class="scholarship-value">
+        <ScholarshipCard />
+      </div>
+      <div class="study-commitment">
+        <Commitment />
+      </div>
+      <div class="work-commitment">
+        <Commitment />
+      </div>
+      <!-- -- Graduation line --  -->
+      <div class="graduation-line">
+        <div class="line" />
+        <span>Graduation</span>
+        <div class="line" />
+      </div>
+      <div class="contract">
+        <Commitment />
+      </div>
+    </section>
+    <section>
+      <div class="slider">
+        <div class="pattern">
           <img
             src="/assets/img/element/background-element-2.svg"
             alt="background element"
           />
         </div>
+        <div />
+        <TestimonialCard />
       </div>
     </section>
-  </div>
 
-  <!-- Section About the apprenticeship -->
-  <section class="apprenticeship-info">
-    <div class="circle-pattren">
-      <img src="/assets/img/profile-2.png" alt="circle pattren" />
-    </div>
-    <div class="apprenticeship-description">
-      <div>
-        <span class="title">About the apprenticeship</span>
-        <p>
-          Our Apprenticeship opportunities are designed to give talented and
-          driven young people from any background access to top-class education,
-          development opportunities and network. This offer includes a
-          scholarship for a 12 month Master’s degree in Data Science and work
-          experience in an exciting technology company with the possibility of a
-          job upon graduation.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section Calculation -->
-  <section class="calcualtion">
-    <!-- Grid -->
-    <div class="scholarship-value">
-      <ScholarshipCard />
-    </div>
-    <div class="study-commitment">
-      <Commitment />
-    </div>
-    <div class="work-commitment">
-      <Commitment />
-    </div>
-    <!-- -- Graduation line --  -->
-    <div class="graduation-line">
-      <div class="line" />
-      <span>Graduation</span>
-      <div class="line" />
-    </div>
-    <div class="contract">
-      <Commitment />
-    </div>
-  </section>
-  <section>
-    <div class="slider">
-      <div class="pattern">
-        <img
-          src="/assets/img/element/background-element-2.svg"
-          alt="background element"
-        />
-      </div>
-      <div />
-      <TestimonialCard />
-    </div>
-  </section>
-
-  <div class="container">
-    <section class="fqa-section">
-      <div class="filter">
-        <h1>Frequently asked questions</h1>
-        <div class="dropdown">
-          <span>Filter by:</span>
-          <div>
-            <Dropdown />
+    <div class="container">
+      <section class="fqa-section">
+        <div class="filter">
+          <h1>Frequently asked questions</h1>
+          <div class="dropdown">
+            <span>Filter by:</span>
+            <div>
+              <Dropdown />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="fqa-list">
-        <FrequentQuestion />
-        <FrequentQuestion />
-        <FrequentQuestion />
-        <FrequentQuestion />
-      </div>
-    </section>
-  </div>
-</main>
+        <div class="fqa-list">
+          <FrequentQuestion />
+          <FrequentQuestion />
+          <FrequentQuestion />
+          <FrequentQuestion />
+        </div>
+      </section>
+    </div>
+  </main>
 {/await}
 
 <style>
