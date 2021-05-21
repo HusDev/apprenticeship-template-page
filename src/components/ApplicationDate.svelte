@@ -1,7 +1,19 @@
-<div class="application-close">
-  <p>Application closes in</p>
-  <span>6 Day : 22 Hrs : 56 Min : 13 Seg</span>
-</div>
+<script>
+  import Countdown from "svelte-countdown";
+  export let application_end_date;
+</script>
+
+<Countdown
+  from={application_end_date}
+  format="YYYY-MM-DD H:m:s"
+  zone="CEST" 
+  let:remaining
+>
+  <div class="application-close">
+    <p>Application closes in</p>
+    <span>{remaining.days} Day : {remaining.hours} Hrs : {remaining.minutes} Min : {remaining.seconds} Seg</span>
+  </div>
+</Countdown>
 
 <style>
   .application-close {

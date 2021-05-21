@@ -210,6 +210,11 @@
   "resolved" "https://registry.npmjs.org/console-clear/-/console-clear-1.1.1.tgz"
   "version" "1.1.1"
 
+"dayjs@^1.8.25":
+  "integrity" "sha512-RI/Hh4kqRc1UKLOAf/T5zdMMX5DQIlDxwUe3wSyMMnEbGunnpENCdbUgM+dW7kXidZqCttBrmw7BhN4TMddkCw=="
+  "resolved" "https://registry.npmjs.org/dayjs/-/dayjs-1.10.4.tgz"
+  "version" "1.10.4"
+
 "deepmerge@^4.2.2":
   "integrity" "sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg=="
   "resolved" "https://registry.npmjs.org/deepmerge/-/deepmerge-4.2.2.tgz"
@@ -610,6 +615,13 @@
   "version" "7.2.0"
   dependencies:
     "has-flag" "^4.0.0"
+
+"svelte-countdown@^1.0.0":
+  "integrity" "sha512-RuaRjnWPrH7xuwPQwb9b+Ek4mtv3knMTytEqOY2mha152edwDfejjSL+/HvtCbIyuAXPOndaut46dIoeAlPh4A=="
+  "resolved" "https://registry.npmjs.org/svelte-countdown/-/svelte-countdown-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "dayjs" "^1.8.25"
 
 "svelte-fa@^2.2.0":
   "integrity" "sha512-PN1H8AWDh+OwhwjJKTv4/zXvKvmvOEVSCVhIhji6Onx8XEw+CGf8BDR0BVUIp87IEX+DEqIo9pbyhgz8EoYZyA=="

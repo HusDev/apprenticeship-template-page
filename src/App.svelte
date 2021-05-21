@@ -69,7 +69,7 @@
         <!-- Powered By -->
         <PartnerComponent />
         <!-- Application expiration date -->
-        <ApplicationDate />
+        <ApplicationDate application_end_date={data.scholarship.application_end_date}/>
         <!-- programme date-location info -->
         <div class="date-location">
           <ApprenticeshipInfoCard />
