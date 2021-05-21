@@ -1,5 +1,48 @@
+
+
+@font-face {
+  font-family: 'Apercu Pro';
+  src: url(./assets);
+  src: url(./assets?#iefix) format('embedded-opentype'),
+    url(./assets/fonts/apercupro-light.woff) format('woff'),
+    url(./assets/fonts/apercupro-light.ttf) format('truetype'),
+    url(./assets/fonts/apercupro-light.svg#apercupro-light) format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Apercu Pro';
+  src: url(./assets/fonts/apercupro-bold.eot);
+  src: url(./assets/fonts/apercupro-bold.eot?#iefix) format('embedded-opentype'),
+    url(./assets/fonts/apercupro-bold.woff) format('woff'),
+    url(./assets/fonts/apercupro-bold.ttf) format('truetype'),
+    url(./assets/fonts/apercupro-bold.svg#apercupro-bold) format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Apercu Pro';
+  src: url(./assets/fonts/apercupro-regular.eot);
+  src: url(./assets/fonts/apercupro-regular.eot?#iefix) format('embedded-opentype'),
+    url(./assets/fonts/apercupro-regular.woff) format('woff'),
+    url(./assets/fonts/apercupro-regular.ttf) format('truetype'),
+    url(./assets/fonts/apercupro-regular.svg#apercupro-regular) format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Apercu Pro';
+  src: url(./assets/fonts/apercupro-medium.woff) format('woff'),
+    url(./assets/fonts/apercupro-medium.otf) format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
 * {
-  font-family: sans-serif; /* Font Family for the page is "Apercu Pro" */
+  font-family: 'Apercu Pro';
 }
 
 /* Global color palette */
