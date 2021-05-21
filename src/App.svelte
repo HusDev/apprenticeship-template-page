@@ -1,5 +1,4 @@
 <script>
-  import "./components/responsive.css";
   import Navbar from "./components/Navbar.svelte";
   import ScholarshipCard from "./components/ScholarshipCard.svelte";
   import Commitment from "./components/Commitment.svelte";
@@ -507,6 +506,7 @@
       width: 100%;
       justify-content: stretch;
       align-items: stretch;
+      z-index: 2;
     }
     .dropdown div {
       width: 100%;
