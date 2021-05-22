@@ -4,17 +4,6 @@
   export let start_date;
   export let application_end_date;
 
-  // change date 
-  function handleDate(start_date) {
-    let date = new Date(start_date).toDateString();
-    date = date.substr(4).split(" ");
-    let temp = date[0];
-    date[0] = date[1]; 
-    date[1] = temp;
-    date = date.join(" ");
-    return date;  
-  }
-
 </script>
 
 <div class="info-card">
@@ -29,11 +18,11 @@
   </div>
   <div>
     <span class="title">Application Deadline</span>
-    <span class="value">{handleDate(application_end_date)}</span>
+    <span class="value">{application_end_date}</span>
   </div>
   <div>
     <span class="title">Start Date</span>
-    <span class="value">{handleDate(start_date)}</span>
+    <span class="value">{start_date}</span>
   </div>
 </div>
 

@@ -9,6 +9,7 @@
   import TestimonialCard from "./components/TestimonialCard.svelte";
   import FrequentQuestion from "./components/FrequentQuestion.svelte";
   import Dropdown from "./components/Dropdown.svelte";
+import BottomStickyBar from "./components/BottomStickyBar.svelte";
 
   // Fetch API
   let dataPromise;
@@ -25,6 +26,18 @@
 
   // FAQ category
   let faq_category = "Select an option";
+
+  // change date 
+  function handleDate(start_date) {
+    let date = new Date(start_date).toDateString();
+    date = date.substr(4).split(" ");
+    let temp = date[0];
+    date[0] = date[1]; 
+    date[1] = temp;
+    date = date.join(" ");
+    return date;  
+  }
+
 </script>
 
 <svelte:head>
@@ -83,8 +96,8 @@
             <ApprenticeshipInfoCard
               location={data.scholarship.location.name}
               duration={data.scholarship.duration}
-              start_date={data.scholarship.scholarship_start_date}
-              application_end_date={data.scholarship.application_end_date}
+              start_date={handleDate(data.scholarship.scholarship_start_date)}
+              application_end_date={handleDate(data.scholarship.application_end_date)}
             />
             <img
               src="/assets/img/element/background-element-2.svg"
@@ -184,6 +197,16 @@
         </div>
       </section>
     </div>
+    <BottomStickyBar 
+    company = {data.scholarship.company.name}
+    name = {data.scholarship}
+    location = {data.scholarship.location.name}
+    start_date = {data.scholarship}
+    duration = {data.scholarship.duration}
+    scholarship_start_date = {handleDate(data.scholarship.scholarship_start_date)}
+    application_end_date = {handleDate(data.scholarship.application_end_date)}
+    application_close_in = {data.scholarship.application_end_date}
+    />
   </main>
 {/await}
 
