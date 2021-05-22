@@ -22,6 +22,9 @@
   };
 
   dataPromise = request();
+
+  // FAQ category
+  let faq_category = "Select an option";
 </script>
 
 <svelte:head>
@@ -167,15 +170,17 @@
           <div class="dropdown">
             <span>Filter by:</span>
             <div>
-              <Dropdown />
+              <Dropdown
+                categories={data.scholarship.faqs.categories}
+               bind:faq_category={faq_category}
+              />
             </div>
           </div>
         </div>
         <div class="fqa-list">
           {#each data.scholarship.faqs.items as faq}
-            
-            <FrequentQuestion {faq} />
-            {/each}
+            <FrequentQuestion {faq} {faq_category} />
+          {/each}
         </div>
       </section>
     </div>

@@ -5,8 +5,11 @@
   faq.answer.forEach(ans => {
     ans["id"] = '_' + Math.random().toString(36).substr(2, 9);  
   });
+  export let faq_category = "All";
+  console.log(faq_category)
 </script>
 
+{#if faq_category == faq.type ||  faq_category == "All" || faq_category == "Select an option" }
 <div class="fq">
   <div class="heading">
     <span class="category">{faq.type}</span>
@@ -23,6 +26,8 @@
     {/each}
   </div>
 </div>
+
+{/if}
 
 <style>
   .fq {

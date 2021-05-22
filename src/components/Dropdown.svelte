@@ -1,30 +1,43 @@
 <script>
-    import Fa from "svelte-fa/src/fa.svelte";
-    import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
-  
-    export let isExpand = false;
-    function clickHandle() {
-      isExpand = !isExpand;
-    }
-  </script>
+  import Fa from "svelte-fa/src/fa.svelte";
+  import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+
+  export let isExpand = false;
+  export let categories;
+  export let faq_category = "Select an option";
+
+  function clickHandle() {
+    isExpand = !isExpand;
+  }
+
+  function handleFilter(category) {
+    faq_category = category;
+  }
+</script>
 
 <div class="dropdown" on:click={clickHandle}>
   <div class="title pointerCursor">
-     Select an option
-    {#if isExpand }
-     <Fa icon={faAngleUp} />
+    <span>
+      {faq_category}
+    </span>
+    {#if isExpand}
+    <span class="arrow">
+      <Fa icon={faAngleUp} />
+    </span>
     {:else}
-    <Fa icon={faAngleDown} />
+    <span class="arrow">
+      <Fa icon={faAngleDown} />
+    </span>
     {/if}
-    </div>
+  </div>
 
-  <div class="menu pointerCursor {isExpand? "": "hide"} ">
-    <div class="option" id="option1">Option 1</div>
-    <div class="option" id="option2">Option 2</div>
-    <div class="option" id="option3">Option 3</div>
-    <div class="option" id="option4">Option 4</div>
-    <div class="option" id="option5">Option 3</div>
-    <div class="option" id="option6">Option 4</div>
+  <div class="menu pointerCursor {isExpand ? '' : 'hide'} ">
+    <div on:click={() => handleFilter("All")} class="option" id="all">All</div>
+    {#each categories as category}
+      <div on:click={() => handleFilter(category)} class="option" id={category}>
+        {category}
+      </div>
+    {/each}
   </div>
 </div>
 
@@ -36,7 +49,7 @@
   .dropdown {
     border: 0.1em solid var(--gray-3);
     border-radius: 20px;
-    width: 10em;
+    width: 15em;
     padding: 10px;
     margin-bottom: 1em;
     z-index: 2;
@@ -44,6 +57,8 @@
   }
 
   .dropdown .title {
+    display: flex;
+    justify-content: space-between;
     margin: 0.3em 0.3em 0.3em 0.3em;
     width: 100%;
     color: var(--purple);
@@ -62,18 +77,20 @@
   }
 
   .dropdown .menu .option:hover {
-    background: rgba(0, 0, 0, 0.2);
+    color: var(--purple)
   }
 
   .pointerCursor:hover {
     cursor: pointer;
   }
 
+  .arrow { 
+    margin-right: 10px;
+  }
 
-@media (min-width: 320px) and (max-width: 767px) {
+  @media (min-width: 320px) and (max-width: 767px) {
     .dropdown {
       width: 100%;
     }
-  
-}
+  }
 </style>
