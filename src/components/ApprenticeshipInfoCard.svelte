@@ -8,7 +8,6 @@
   function handleDate(start_date) {
     let date = new Date(start_date).toDateString();
     date = date.substr(4).split(" ");
-    console.log(date)
     let temp = date[0];
     date[0] = date[1]; 
     date[1] = temp;
