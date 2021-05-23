@@ -1,16 +1,16 @@
 <script>
   export let isMore = false;
-  let rotate1 = false;
+  let rotate = false;
   function clickHandle() {
     // add class to rotate plus icon
     if (isMore) {
       isMore = !isMore;
     } else {
       setTimeout(() => {
-        rotate1 = true;
+        rotate = true;
         setTimeout(() => {
           isMore = !isMore;
-          rotate1 = false;
+          rotate = false;
         }, 300);
       }, 50);
     }
@@ -19,7 +19,7 @@
 
 <div class="read-more {isMore ? 'more' : ''}" on:click={clickHandle}>
   <div
-    class="plus-minus {isMore ? 'rotate' : ''} {rotate1 ? 'first-rotate' : ''}"
+    class="plus-minus {isMore ? 'rotate' : ''} {rotate ? 'first-rotate' : ''}"
   >
     <span class="horizontal-bar" />
     <span class="vertical-bar" />

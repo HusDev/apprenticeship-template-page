@@ -12,15 +12,10 @@
   import BottomStickyBar from "./components/BottomStickyBar.svelte";
 
   // Fetch API
-  const apiUrl = __myapp.env.API_URL
-  console.log(apiUrl)
   let dataPromise;
   const request = async () => {
-    const res = await fetch(
-      "https://stage.harbour.space/api/v1/scholarship_pages/data-science-apprenticeship-zeptolab"
-    );
+    const res = await fetch(__myapp.env.API_URL);
     const data = await res.json();
-    console.log(data);
     return await data;
   };
 
@@ -29,7 +24,8 @@
   // FAQ category
   let faq_category = "Select an option";
 
-  // change date
+  // Change date
+  // From this form: 2020-11-22 00:00:00 to this form: 22 Nov 2020
   function handleDate(start_date) {
     let date = new Date(start_date).toDateString();
     date = date.substr(4).split(" ");
@@ -41,6 +37,7 @@
   }
 </script>
 
+<!-- Meta data and page title -->
 <svelte:head>
   {#await dataPromise}
     <title>waiting ...</title>
@@ -53,6 +50,7 @@
   {/await}
 </svelte:head>
 
+<!-- Main component -->
 {#await dataPromise}
   <div class="waiting">
     <h1>HARBOUR.SPACE</h1>
@@ -166,6 +164,7 @@
         />
       </div>
     </section>
+    
     <section>
       <div class="slider">
         <div class="pattern">
@@ -200,6 +199,7 @@
         </div>
       </section>
     </div>
+
     <BottomStickyBar
       company={data.scholarship.company.name}
       name={data.scholarship}
@@ -212,6 +212,7 @@
       application_end_date={handleDate(data.scholarship.application_end_date)}
       application_close_in={data.scholarship.application_end_date}
     />
+
   </main>
 {/await}
 
