@@ -9,7 +9,7 @@
   import TestimonialCard from "./components/TestimonialCard.svelte";
   import FrequentQuestion from "./components/FrequentQuestion.svelte";
   import Dropdown from "./components/Dropdown.svelte";
-import BottomStickyBar from "./components/BottomStickyBar.svelte";
+  import BottomStickyBar from "./components/BottomStickyBar.svelte";
 
   // Fetch API
   let dataPromise;
@@ -27,17 +27,16 @@ import BottomStickyBar from "./components/BottomStickyBar.svelte";
   // FAQ category
   let faq_category = "Select an option";
 
-  // change date 
+  // change date
   function handleDate(start_date) {
     let date = new Date(start_date).toDateString();
     date = date.substr(4).split(" ");
     let temp = date[0];
-    date[0] = date[1]; 
+    date[0] = date[1];
     date[1] = temp;
     date = date.join(" ");
-    return date;  
+    return date;
   }
-
 </script>
 
 <svelte:head>
@@ -97,7 +96,9 @@ import BottomStickyBar from "./components/BottomStickyBar.svelte";
               location={data.scholarship.location.name}
               duration={data.scholarship.duration}
               start_date={handleDate(data.scholarship.scholarship_start_date)}
-              application_end_date={handleDate(data.scholarship.application_end_date)}
+              application_end_date={handleDate(
+                data.scholarship.application_end_date
+              )}
             />
             <img
               src="/assets/img/element/background-element-2.svg"
@@ -185,7 +186,7 @@ import BottomStickyBar from "./components/BottomStickyBar.svelte";
             <div>
               <Dropdown
                 categories={data.scholarship.faqs.categories}
-               bind:faq_category={faq_category}
+                bind:faq_category
               />
             </div>
           </div>
@@ -197,15 +198,17 @@ import BottomStickyBar from "./components/BottomStickyBar.svelte";
         </div>
       </section>
     </div>
-    <BottomStickyBar 
-    company = {data.scholarship.company.name}
-    name = {data.scholarship}
-    location = {data.scholarship.location.name}
-    start_date = {data.scholarship}
-    duration = {data.scholarship.duration}
-    scholarship_start_date = {handleDate(data.scholarship.scholarship_start_date)}
-    application_end_date = {handleDate(data.scholarship.application_end_date)}
-    application_close_in = {data.scholarship.application_end_date}
+    <BottomStickyBar
+      company={data.scholarship.company.name}
+      name={data.scholarship}
+      location={data.scholarship.location.name}
+      start_date={data.scholarship}
+      duration={data.scholarship.duration}
+      scholarship_start_date={handleDate(
+        data.scholarship.scholarship_start_date
+      )}
+      application_end_date={handleDate(data.scholarship.application_end_date)}
+      application_close_in={data.scholarship.application_end_date}
     />
   </main>
 {/await}
@@ -446,8 +449,6 @@ import BottomStickyBar from "./components/BottomStickyBar.svelte";
 
   /* Responsive */
 
-  /* -- Responsive -- */
-
   /* 
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -527,6 +528,16 @@ import BottomStickyBar from "./components/BottomStickyBar.svelte";
     width: 100%;
     height: 100vh;
     color: var(--purple);
+  }
+
+  .waiting {
+    animation: blinker 1s linear infinite;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
   }
 
   /* 

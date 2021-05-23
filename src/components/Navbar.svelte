@@ -1,3 +1,6 @@
+<script>
+import HamburgerManu from "./HamburgerManu.svelte";
+</script>
 <nav>
   <!-- Harbour Space logo -->
   <img id="logo" src="/assets/img/logo.svg" alt="Harbour Space logo" />
@@ -7,7 +10,7 @@
     </div>
     <div class="menu">
       <span>MENU</span>
-      <img src="/assets/img/icons/menu.svg" alt="Menu" />
+      <HamburgerManu/>
     </div>
   </div>
 </nav>
@@ -17,7 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 30px;
+    padding: 20px 30px;
     background-color: var(--dark-purple);
     margin: 0px;
     position: fixed;
@@ -25,6 +28,7 @@
     left: 0;
     right: 0;
     z-index: 10;
+    padding-right: 50px;
   }
 
   #logo { 
@@ -52,6 +56,7 @@
 
   .apply-now {
     display: flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
     background-color: var(--green);
@@ -60,15 +65,15 @@
     height: 100px;
     border-radius: 50%;
     margin-bottom: -50px;
-    margin-right: 50px;
+    margin-right: 250px;
     cursor: pointer;
     text-align: center;
-
+    transition: 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
   }
 
   .apply-now:hover { 
-    transform: scale(1.1);
-}
+    padding: 5px;
+  }
 
   .apply-now span {
     width: min-content;
