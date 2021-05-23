@@ -1,19 +1,29 @@
 <script>
-  import Fa from "svelte-fa/src/fa.svelte";
-  import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-
   export let isMore = false;
+  let rotate1 = false;
   function clickHandle() {
-    isMore = !isMore;
+    // add class to rotate plus icon
+    if (isMore) {
+      isMore = !isMore;
+    } else {
+      setTimeout(() => {
+        rotate1 = true;
+        setTimeout(() => {
+          isMore = !isMore;
+          rotate1 = false;
+        }, 300);
+      }, 50);
+    }
   }
 </script>
 
 <div class="read-more {isMore ? 'more' : ''}" on:click={clickHandle}>
-  {#if isMore}
-    <Fa icon={faMinus} />
-  {:else}
-    <Fa icon={faPlus} />
-  {/if}
+  <div
+    class="plus-minus {isMore ? 'rotate' : ''} {rotate1 ? 'first-rotate' : ''}"
+  >
+    <span class="horizontal-bar" />
+    <span class="vertical-bar" />
+  </div>
 </div>
 
 <style>
@@ -27,11 +37,57 @@
     border-radius: 50%;
     border: #959595 solid 1px;
     cursor: pointer;
+    transition: 100ms;
   }
 
   .more {
-    background-color: var(--purple);
+    border: var(--purple) solid 25px;
+    width: 0;
+    height: 0;
+  }
+
+  .plus-minus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms;
+  }
+
+  .plus-minus span {
+    width: 2px;
+    height: 14px;
+    border-radius: 4px;
+    background-color: grey;
+  }
+
+  .plus-minus.rotate {
+    transform-origin: center;
+    transform: rotate(720deg);
     color: white;
-    border: var(--purple) solid 1px;
+  }
+
+  .plus-minus.rotate span {
+    background-color: rgb(255, 255, 255);
+  }
+
+  .plus-minus.rotate .vertical-bar {
+    visibility: hidden;
+  }
+
+  .plus-minus .horizontal-bar {
+    transform-origin: center;
+    transform: translateY(7px) rotate(90deg);
+  }
+  .plus-minus .vertical-bar {
+    transform: translateY(-7px);
+  }
+
+  .first-rotate {
+    transform: rotate(360deg);
+  }
+
+  .first-rotate span {
+    background-color: var(--purple);
   }
 </style>
