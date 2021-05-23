@@ -12,6 +12,8 @@
   import BottomStickyBar from "./components/BottomStickyBar.svelte";
 
   // Fetch API
+  const apiUrl = __myapp.env.API_URL
+  console.log(apiUrl)
   let dataPromise;
   const request = async () => {
     const res = await fetch(
