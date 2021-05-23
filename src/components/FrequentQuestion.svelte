@@ -20,9 +20,9 @@
       <ReadMoreButton bind:isMore />
     </div>
     {#each faq.answer as ans (ans.id)}
-      <p key={ans.id} class={isMore ? "" : "hidden"}>
+      <p key={ans.id} class={isMore ? "active" : "hidden"}>
         {ans.data}
-      </p> <br>
+      </p> 
     {/each}
   </div>
 </div>
@@ -45,6 +45,14 @@
   p {
     grid-column: 2/2;
     display: block;
+    transition: 500ms;
+  }
+
+  p.active {
+    display: block;
+    height: fit-content;
+    opacity: 1;
+    padding-bottom: 50px;
   }
 
   .category {
@@ -58,7 +66,9 @@
   }
 
   .hidden {
-    display: none;
+    display: block;
+    height: 0;
+    opacity: 0;
   }
   .toggle-btn {
     display: flex;
