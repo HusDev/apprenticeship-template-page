@@ -23,6 +23,8 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "sirv-cli": "^1.0.0",
-    "svelte-countdown": "^1.0.0"
+    "svelte-countdown": "^1.0.0",
+    "svelte-watch-resize": "^1.0.3",
+    "swiper": "^6.6.2"
   }
 }

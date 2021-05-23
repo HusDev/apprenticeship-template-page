@@ -10,6 +10,13 @@
   import FrequentQuestion from "./components/FrequentQuestion.svelte";
   import Dropdown from "./components/Dropdown.svelte";
   import BottomStickyBar from "./components/BottomStickyBar.svelte";
+  import { watchResize } from "svelte-watch-resize";
+
+  import { Swiper, SwiperSlide } from "swiper/svelte";
+  import SwiperCore, { Autoplay, A11y } from 'swiper/core';
+  SwiperCore.use([Autoplay, A11y]);
+
+  import "swiper/swiper-bundle.min.css";
 
   // Fetch API
   let dataPromise;
@@ -35,6 +42,14 @@
     date = date.join(" ");
     return date;
   }
+
+  // Watch resize for responsive slider 
+  let width; 
+  function handleResize(node) {
+    width = node.clientWidth;
+    console.log(width)
+  }
+
 </script>
 
 <!-- Meta data and page title -->
@@ -56,7 +71,7 @@
     <h1>HARBOUR.SPACE</h1>
   </div>
 {:then data}
-  <main>
+  <main use:watchResize={handleResize}>
     <Navbar />
     <div class="container">
       <!-- Section Data Science Apprenticeship info -->
@@ -164,19 +179,31 @@
         />
       </div>
     </section>
-    
-    <section>
-      <div class="slider">
-        <div class="pattern">
-          <img
-            src="/assets/img/element/background-element-2.svg"
-            alt="background element"
-          />
-        </div>
-        <div />
+
+    <div class="swiper {width < 1440? "slide-margin": ""}">
+    <!-- Swiper here -->
+    <Swiper
+      spaceBetween={30}
+      slidesPerView={ 1}
+      autoplay={true}
+      on:slideChange={() => console.log("slide change")}
+      on:swiper={(e) => console.log(e.detail[0])}
+    >
+      <SwiperSlide
+      >
         <TestimonialCard />
-      </div>
-    </section>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <TestimonialCard />
+      </SwiperSlide>
+      
+      <SwiperSlide >
+        <TestimonialCard />
+      </SwiperSlide>
+
+    </Swiper>
+  </div>
 
     <div class="container">
       <section class="fqa-section">
@@ -212,7 +239,6 @@
       application_end_date={handleDate(data.scholarship.application_end_date)}
       application_close_in={data.scholarship.application_end_date}
     />
-
   </main>
 {/await}
 
@@ -381,34 +407,16 @@
   }
 
   /* End Third Section  */
+  .swiper {
+    margin: 200px 25%;
+  }
+  
+  .slide-margin{
+    margin: 150px 50px;
+  }
 
   /* Forth Section */
-  .slider {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    margin-top: 300px;
-  }
 
-  .slider .pattern {
-    position: absolute;
-    z-index: -1;
-    margin: auto;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-
-  .slider .pattern img {
-    width: 50%;
-    margin-top: -100px;
-  }
 
   .fqa-section {
     margin-top: 200px;

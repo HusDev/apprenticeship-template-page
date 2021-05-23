@@ -1,5 +1,4 @@
 <script>
-
   // Cursor event
   let clientX;
   let clientY;
@@ -17,21 +16,20 @@
   function handleMouseover() {
     showCursor = true;
   }
-
-
-
 </script>
-<div class="testimonial-card"
-bind:this={myCard}
-on:mouseover={handleMouseover}
-on:mouseout={handleMouseout}
-on:mousemove={handleMousemove}
+
+<div
+  class="testimonial-card"
+  bind:this={myCard}
+  on:mouseover={handleMouseover}
+  on:mouseout={handleMouseout}
+  on:mousemove={handleMousemove}
 >
   <div class="profile-info">
     <div>
       <img
         class="img-profile"
-        src="assets/img/Default-profile-image.jpeg"
+        src="assets/img/profile-img.svg"
         alt=""
       />
       <div class="description">
@@ -52,20 +50,20 @@ on:mousemove={handleMousemove}
   </div>
 </div>
 
-<div
+<!-- <div
 class={showCursor ? "" : "hide"}
 style="left:{clientX}px; top:{clientY - 400}px;"
 id="cursor"
 >
 <span>Drag</span>
-</div>
-
+</div> -->
 <style>
   .testimonial-card {
     border: 1px solid var(--gray-3);
     color: #6a6a6a;
     background-color: white;
-    cursor: none;
+    /* cursor: url('./assets/img/cursor.cur') 32 32, default; */
+    cursor: url("assets/img/cursor.png"), pointer;
   }
 
   .paragraph {
@@ -137,6 +135,4 @@ id="cursor"
   #cursor.hide span {
     display: none;
   }
-
-
 </style>

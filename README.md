@@ -10,6 +10,7 @@ Harbour.Space Frontend Challenge - Microinteractions
 ## Technologies
 Project is created with:
 * [Svelte](https://svelte.dev/)
+* [Swiper](https://swiperjs.com/svelte)
 
 	
 ## Setup
