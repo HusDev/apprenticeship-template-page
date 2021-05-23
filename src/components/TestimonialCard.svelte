@@ -135,4 +135,13 @@ id="cursor"
   #cursor.hide span {
     display: none;
   }
+
+  @media (min-width: 320px) and (max-width: 767px) {
+    .paragraph {
+    background-color: var(--gray-5);
+    padding: 40px 20px;
+    font-size: larger;
+    font-weight: 300;
+  }
+  }
 </style>
