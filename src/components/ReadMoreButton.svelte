@@ -1,7 +1,7 @@
-<script>
-  export let isMore = false;
-  let rotate = false;
-  function clickHandle() {
+<script lang="ts">
+  export let isMore: boolean = false;
+  let rotate: boolean = false;
+  const clickHandle = () => {
     // add class to rotate plus icon
     if (isMore) {
       isMore = !isMore;

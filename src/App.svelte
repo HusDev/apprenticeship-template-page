@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Navbar from "./components/Navbar.svelte";
   import ScholarshipCard from "./components/ScholarshipCard.svelte";
   import Commitment from "./components/Commitment.svelte";
@@ -13,7 +13,7 @@
   import { watchResize } from "svelte-watch-resize";
 
   import { Swiper, SwiperSlide } from "swiper/svelte";
-  import SwiperCore, { Autoplay, A11y } from 'swiper/core';
+  import SwiperCore, { Autoplay, A11y } from "swiper/core";
   SwiperCore.use([Autoplay, A11y]);
 
   import "swiper/swiper-bundle.min.css";
@@ -33,23 +33,21 @@
 
   // Change date
   // From this form: 2020-11-22 00:00:00 to this form: 22 Nov 2020
-  function handleDate(start_date) {
-    let date = new Date(start_date).toDateString();
-    date = date.substr(4).split(" ");
-    let temp = date[0];
-    date[0] = date[1];
-    date[1] = temp;
-    date = date.join(" ");
+  const handleDate = (start_date: string) => {
+    let date: string = new Date(start_date).toDateString();
+    let subDateList: string[] = date.substr(4).split(" ");
+    let temp = subDateList[0];
+    subDateList[0] = subDateList[1];
+    subDateList[1] = temp;
+    date = subDateList.join(" ");
     return date;
-  }
+  };
 
-  // Watch resize for responsive slider 
-  let width; 
-  function handleResize(node) {
+  // Watch resize for responsive slider
+  let width;
+  const handleResize = (node) => {
     width = node.clientWidth;
-    console.log(width)
-  }
-
+  };
 </script>
 
 <!-- Meta data and page title -->
@@ -175,35 +173,31 @@
         <Commitment
           title={"Work opportunity"}
           description={"The most successful participants may be offered to join Zeptolab full-time after graduation."}
-          effort={""}
+          effort={-1}
         />
       </div>
     </section>
 
-    <div class="swiper {width < 1440? "slide-margin": ""}">
-    <!-- Swiper here -->
-    <Swiper
-      spaceBetween={30}
-      slidesPerView={ 1}
-      autoplay={true}
-      on:slideChange={() => console.log("slide change")}
-      on:swiper={(e) => console.log(e.detail[0])}
-    >
-      <SwiperSlide
+    <div class="swiper {width < 1440 ? 'slide-margin' : ''}">
+      <!-- Swiper here -->
+      <Swiper
+        spaceBetween={30}
+        slidesPerView={1}
+        autoplay={true}
       >
-        <TestimonialCard />
-      </SwiperSlide>
+        <SwiperSlide>
+          <TestimonialCard />
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <TestimonialCard />
-      </SwiperSlide>
-      
-      <SwiperSlide >
-        <TestimonialCard />
-      </SwiperSlide>
+        <SwiperSlide>
+          <TestimonialCard />
+        </SwiperSlide>
 
-    </Swiper>
-  </div>
+        <SwiperSlide>
+          <TestimonialCard />
+        </SwiperSlide>
+      </Swiper>
+    </div>
 
     <div class="container">
       <section class="fqa-section">
@@ -221,7 +215,7 @@
         </div>
         <div class="fqa-list">
           {#each data.scholarship.faqs.items as faq}
-            <FrequentQuestion {faq} {faq_category} />
+            <FrequentQuestion faq = {faq} {faq_category} />
           {/each}
         </div>
       </section>
@@ -229,15 +223,12 @@
 
     <BottomStickyBar
       company={data.scholarship.company.name}
-      name={data.scholarship}
       location={data.scholarship.location.name}
-      start_date={data.scholarship}
       duration={data.scholarship.duration}
       scholarship_start_date={handleDate(
         data.scholarship.scholarship_start_date
       )}
       application_end_date={handleDate(data.scholarship.application_end_date)}
-      application_close_in={data.scholarship.application_end_date}
     />
   </main>
 {/await}
@@ -410,13 +401,12 @@
   .swiper {
     margin: 200px 25%;
   }
-  
-  .slide-margin{
+
+  .slide-margin {
     margin: 150px 50px;
   }
 
   /* Forth Section */
-
 
   .fqa-section {
     margin-top: 200px;
@@ -493,11 +483,6 @@
     .scholarship-info div.left-side h1.name {
       font-size: 48px;
     }
-    .slider {
-      grid-template-columns: 1fr;
-      padding: 1px;
-      margin: 200px 20%;
-    }
   }
 
   /* 
@@ -525,11 +510,6 @@
       font-size: 48px;
     }
 
-    .slider {
-      grid-template-columns: 1fr;
-      padding: 1px;
-      margin: 200px 20px;
-    }
   }
 
   .waiting {
@@ -640,12 +620,6 @@
     .fqa-list {
       margin-top: 20px;
       border-top: 0;
-    }
-
-    .slider {
-      grid-template-columns: 1fr;
-      padding: 1px;
-      margin: 200px 20px;
     }
 
     .name-element img {

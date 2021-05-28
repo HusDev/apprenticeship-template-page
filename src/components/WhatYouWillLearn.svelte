@@ -1,6 +1,6 @@
-<script>
+<script lang="ts">
   import ReadMoreButton from "./ReadMoreButton.svelte";
-  let isMore = false;
+  let isMore: boolean = false;
 </script>
 
 <div class="fq">
@@ -49,7 +49,7 @@
     display: none;
   }
 
-  .toggle-btn { 
+  .toggle-btn {
     justify-self: end;
   }
 </style>

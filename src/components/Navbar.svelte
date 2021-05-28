@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import HamburgerManu from "./HamburgerManu.svelte";
 </script>
 <nav>

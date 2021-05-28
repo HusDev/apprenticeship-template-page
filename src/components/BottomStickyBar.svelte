@@ -1,12 +1,11 @@
-<script>
+<script lang="ts">
   import Countdown from "svelte-countdown";
 
-  export let company;
-  export let name;
-  export let location;
-  export let duration;
-  export let scholarship_start_date;
-  export let application_end_date;
+  export let company: string;
+  export let location: string;
+  export let duration: number;
+  export let scholarship_start_date: string;
+  export let application_end_date: string;
 </script>
 
 <div class="stickyBar">

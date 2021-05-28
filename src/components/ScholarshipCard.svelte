@@ -1,10 +1,11 @@
-<script>
-  export let total_value;
-  export let tuition;
-  export let remaining;
-  export let stipend_per_year;
-  export let stipend_per_month;
+<script lang="ts">
+  export let total_value: number;
+  export let tuition: number;
+  export let remaining: number;
+  export let stipend_per_year: number;
+  export let stipend_per_month: number;
 </script>
+
 <div class="card">
   <div class="title-fee">
     <span class="title value">Scholarship value</span>
@@ -23,7 +24,9 @@
     </div>
     <div class="col-2-span">
       <span class="title">Living stipend</span>
-      <span>€{stipend_per_year.toLocaleString()} (€{stipend_per_month.toLocaleString()}/month)</span>
+      <span
+        >€{stipend_per_year.toLocaleString()} (€{stipend_per_month.toLocaleString()}/month)</span
+      >
     </div>
   </div>
 </div>
@@ -79,7 +82,7 @@
     color: var(--gray-1);
   }
 
-  .col-2-span { 
+  .col-2-span {
     grid-column: 1/3;
     grid-row: 2/3;
   }

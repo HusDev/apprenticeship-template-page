@@ -1,34 +1,40 @@
-<script>
+<script lang="ts">
   import ReadMoreButton from "./ReadMoreButton.svelte";
-  let isMore = false;
-  export let faq;
-  
-  // Add key for each paragraph
-  faq.answer.forEach(ans => {
-    ans["id"] = '_' + Math.random().toString(36).substr(2, 9);  
-  });
-  
-  export let faq_category = "All";
+
+  interface Answer {
+    data: string;
+    type: string;
+  }
+
+  interface IFaq {
+    type: string;
+    answer: Answer[];
+    question: string;
+  }
+
+  export let faq: IFaq;
+  export let faq_category: string = "All";
+  let isMore: boolean = false;
+  let answer: Answer[] = faq.answer;  
 </script>
 
-{#if faq_category == faq.type ||  faq_category == "All" || faq_category == "Select an option" }
-<div class="fq">
-  <div class="heading">
-    <span class="category">{faq.type}</span>
-    <div>
-      <span class="title">{faq.question}</span>
+{#if faq_category == faq.type || faq_category == "All" || faq_category == "Select an option"}
+  <div class="fq">
+    <div class="heading">
+      <span class="category">{faq.type}</span>
+      <div>
+        <span class="title">{faq.question}</span>
+      </div>
+      <div class="toggle-btn">
+        <ReadMoreButton bind:isMore />
+      </div>
+      {#each answer as ans}
+        <p class={isMore ? "active" : "hidden"}>
+          {ans.data}
+        </p>
+      {/each}
     </div>
-    <div class="toggle-btn">
-      <ReadMoreButton bind:isMore />
-    </div>
-    {#each faq.answer as ans (ans.id)}
-      <p key={ans.id} class={isMore ? "active" : "hidden"}>
-        {ans.data}
-      </p> 
-    {/each}
   </div>
-</div>
-
 {/if}
 
 <style>
@@ -87,7 +93,7 @@
     }
     p {
       grid-column: 1/2;
-    display: block;
+      display: block;
     }
   }
 </style>

@@ -1,8 +1,8 @@
-<script>
-  export let location;
-  export let duration;
-  export let start_date;
-  export let application_end_date;
+<script lang="ts">
+  export let location: string;
+  export let duration: number;
+  export let start_date: string;
+  export let application_end_date: string;
 
 </script>
 

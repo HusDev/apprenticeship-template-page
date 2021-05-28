@@ -1,6 +1,6 @@
-<script>
-  export let image;
-  export let name; 
+<script lang="ts">
+  export let image: string;
+  export let name: string;
 </script>
 
 <div class="partner">
@@ -36,7 +36,7 @@
     color: var(--gray-2);
   }
 
-  img { 
+  img {
     width: 150px;
   }
 </style>

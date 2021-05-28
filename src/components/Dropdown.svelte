@@ -1,18 +1,18 @@
-<script>
+<script lang="ts">
   import Fa from "svelte-fa/src/fa.svelte";
   import { faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
-  export let isExpand = false;
-  export let categories;
-  export let faq_category = "Select an option";
+  export let isExpand: boolean = false;
+  export let categories: string;
+  export let faq_category: string = "Select an option";
 
-  function clickHandle() {
+  const clickHandle = () => {
     isExpand = !isExpand;
-  }
+  };
 
-  function handleFilter(category) {
+  const handleFilter = (category) => {
     faq_category = category;
-  }
+  };
 </script>
 
 <div class="dropdown" on:click={clickHandle}>
@@ -21,13 +21,13 @@
       {faq_category}
     </span>
     {#if isExpand}
-    <span class="arrow">
-      <Fa icon={faAngleUp} />
-    </span>
+      <span class="arrow">
+        <Fa icon={faAngleUp} />
+      </span>
     {:else}
-    <span class="arrow">
-      <Fa icon={faAngleDown} />
-    </span>
+      <span class="arrow">
+        <Fa icon={faAngleDown} />
+      </span>
     {/if}
   </div>
 
@@ -77,14 +77,14 @@
   }
 
   .dropdown .menu .option:hover {
-    color: var(--purple)
+    color: var(--purple);
   }
 
   .pointerCursor:hover {
     cursor: pointer;
   }
 
-  .arrow { 
+  .arrow {
     margin-right: 10px;
   }
 

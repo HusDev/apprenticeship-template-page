@@ -1,21 +1,21 @@
-<script>
+<script lang="ts">
   // Cursor event
-  let clientX;
-  let clientY;
+  let clientX: number;
+  let clientY: number;
   let myCard;
-  let showCursor = false;
-  function handleMousemove(e) {
+  let showCursor: boolean = false;
+  const handleMousemove = (e) => {
     clientX = e.clientX;
     clientY = e.clientY;
-  }
+  };
 
-  function handleMouseout() {
+  const handleMouseout = () => {
     showCursor = false;
-  }
+  };
 
-  function handleMouseover() {
+  const handleMouseover = () => {
     showCursor = true;
-  }
+  };
 </script>
 
 <div
@@ -27,11 +27,7 @@
 >
   <div class="profile-info">
     <div>
-      <img
-        class="img-profile"
-        src="assets/img/profile-img.svg"
-        alt=""
-      />
+      <img class="img-profile" src="assets/img/profile-img.svg" alt="" />
       <div class="description">
         <span class="name">Irene Pereyra</span>
         <span>Interaction Design Fellow ‘19</span>
@@ -111,7 +107,7 @@ id="cursor"
     border-radius: 50%;
   }
 
-  #cursor {
+  /* #cursor {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -134,14 +130,14 @@ id="cursor"
 
   #cursor.hide span {
     display: none;
-  }
+  } */
 
   @media (min-width: 320px) and (max-width: 767px) {
     .paragraph {
-    background-color: var(--gray-5);
-    padding: 40px 20px;
-    font-size: larger;
-    font-weight: 300;
-  }
+      background-color: var(--gray-5);
+      padding: 40px 20px;
+      font-size: larger;
+      font-weight: 300;
+    }
   }
 </style>

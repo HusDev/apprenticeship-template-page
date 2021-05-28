@@ -1,12 +1,12 @@
-<script>
-  export let effort; 
-  export let description;
-  export let title; 
+<script lang="ts">
+  export let effort: number; 
+  export let description: string;
+  export let title: string ;  
 </script>
 
 <div class="commitment-card">
   <span class="title">{title}</span>
-  {#if effort != ""}
+  {#if effort !== -1}
   <span class="effort">{effort} hours / day</span>
   <div class="line" />
   {/if}
